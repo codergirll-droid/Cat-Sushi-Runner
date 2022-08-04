@@ -36,15 +36,14 @@ public class Player : MonoBehaviour
         }else if (Input.GetMouseButtonUp(0))
         {
             moveAmount = 0;
-            xPos = Input.mousePosition.x;
         }
     }
 
     void Move()
     {
-        MoveRightLeft();
         Vector3 newPos = transform.position + transform.forward * Time.deltaTime * forwardMoveSpeed;
         transform.position = Vector3.Lerp(transform.position, newPos, 0.5f);
+        MoveRightLeft();
 
         //transform.position += transform.forward * Time.deltaTime * forwardMoveSpeed;
         //rigidbody.MovePosition(transform.position + Vector3.forward * Time.deltaTime * forwardMoveSpeed);
@@ -53,9 +52,18 @@ public class Player : MonoBehaviour
     void MoveRightLeft()
     {
         Vector3 newPos = transform.position + new Vector3(moveAmount * horizontalMoveSpeed * Time.deltaTime, 0, 0);
-        if(newPos.x < maxMovePos && newPos.x > -maxMovePos)
+        Vector3 smoothPos = Vector3.Lerp(transform.position, newPos, 0.4f);
+        if (smoothPos.x < maxMovePos && smoothPos.x > -maxMovePos)
         {
-            transform.position = Vector3.Lerp(transform.position, newPos, 0.5f);
+            transform.position = smoothPos;
+        }
+        else if(smoothPos.x <= -maxMovePos)
+        {
+            transform.position = new Vector3(-maxMovePos, transform.position.y, transform.position.z);
+        }
+        else if(smoothPos.x >= maxMovePos)
+        {
+            transform.position = new Vector3(maxMovePos, transform.position.y, transform.position.z);
         }
     }
 
