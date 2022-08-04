@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class camFollow : MonoBehaviour
 {
-    public GameObject target;
+    GameObject target;
     public Vector3 offset;
+
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void FixedUpdate()
     {
