@@ -118,6 +118,10 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "collectible")
         {
             Destroy(other.gameObject);
+
+        }else if (other.gameObject.tag == "obstacle")
+        {
+            Destroy(other.gameObject);
         }
     }
 
