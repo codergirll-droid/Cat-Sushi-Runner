@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 6739639608114120756}
   - component: {fileID: 8326092347350868173}
   - component: {fileID: 5911303440095969884}
+  - component: {fileID: -5860134314419273536}
   m_Layer: 0
   m_Name: sushi1
   m_TagString: collectible
@@ -107,14 +108,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7788844415059856624}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.7583833, y: -1.9951484, z: -1.8355598}
-  m_LocalScale: {x: 0.8203759, y: 0.82037616, z: 0.82037616}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4852384124832732934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &6739639608114120756
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -177,3 +178,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19999999, y: 0.10693453, z: 0.07937263}
   m_Center: {x: 0, y: 0, z: 0.035000008}
+--- !u!114 &-5860134314419273536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788844415059856624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7fe2e1c6761245996370b8c22aace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2139146573629340992}
   - component: {fileID: 478153203553999951}
   - component: {fileID: 173919382790201587}
+  - component: {fileID: 7265620248431360069}
   m_Layer: 0
   m_Name: sushi2
   m_TagString: collectible
@@ -97,6 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19999999, y: 0.10693453, z: 0.07937263}
   m_Center: {x: 0, y: -4.973799e-16, z: 0.035000008}
+--- !u!114 &7265620248431360069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163999100181362891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7fe2e1c6761245996370b8c22aace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4078937178216900410
 GameObject:
   m_ObjectHideFlags: 0

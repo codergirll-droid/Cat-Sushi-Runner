@@ -9,10 +9,28 @@ public class Player : MonoBehaviour
     public float forwardMoveSpeed = 0.5f;
     public float horizontalMoveSpeed = 0.5f;
     public float maxMovePos = 1f;
+    public int health = 3;
+    public int food = 0;
 
+    public bool canMove = true;
+    public bool canWalk = true;
 
     //bool isOnRight, isOnLeft, isSliding;
     //bool isOnMiddle = true;
+
+    public static Player Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
 
     private void FixedUpdate()
@@ -41,9 +59,18 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        Vector3 newPos = transform.position + transform.forward * Time.deltaTime * forwardMoveSpeed;
-        transform.position = Vector3.Lerp(transform.position, newPos, 0.5f);
-        MoveRightLeft();
+        if (canWalk)
+        {
+            Vector3 newPos = transform.position + transform.forward * Time.deltaTime * forwardMoveSpeed;
+            transform.position = Vector3.Lerp(transform.position, newPos, 0.5f);
+
+        }
+        if (canMove)
+        {
+            MoveRightLeft();
+
+        }
+
 
         //transform.position += transform.forward * Time.deltaTime * forwardMoveSpeed;
         //rigidbody.MovePosition(transform.position + Vector3.forward * Time.deltaTime * forwardMoveSpeed);
@@ -117,12 +144,40 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "collectible")
         {
+            IncreaseFood();
+            //add pickup particles for sushis
             Destroy(other.gameObject);
 
         }else if (other.gameObject.tag == "obstacle")
         {
+            //add destroy particles for obstacle
             Destroy(other.gameObject);
+            DecreaseHealth();
+        }else if(other.gameObject.tag == "win")
+        {
+            canMove = false;
+            canWalk = false;
+            //stop walk anim
+            //call camera functions to look at the cat
+            //meuw the cat
         }
+    }
+
+
+    void DecreaseHealth()
+    {
+        health -= 1;
+        //update ui
+        if(health == 0)
+        {
+            //add die particles
+            gameObject.SetActive(false);
+        }
+    }
+
+    void IncreaseFood()
+    {
+        food += 5;
     }
 
 }
