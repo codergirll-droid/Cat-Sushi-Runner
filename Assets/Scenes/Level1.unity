@@ -20218,13 +20218,41 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: foodTxt
+      value: 
+      objectReference: {fileID: 329151439}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: foodEffect
+      value: 
+      objectReference: {fileID: 5334238868326036234, guid: ea47de987ada12b4b833e801caded767, type: 3}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
       propertyPath: maxMovePos
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: damageEffect
+      value: 
+      objectReference: {fileID: 7023365341374389194, guid: 8433c3962cca8a6498b04ad11f0892bc, type: 3}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
       propertyPath: forwardMoveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: lifeSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: lifeSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 644622196}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: lifeSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 607945870}
+    - target: {fileID: 2968341891482729106, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
+      propertyPath: lifeSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 382022992}
     - target: {fileID: 2968341891482729111, guid: c7b0616342650bb4bb244be16782bab8, type: 3}
       propertyPath: m_Name
       value: cat

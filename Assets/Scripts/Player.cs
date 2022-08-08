@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,9 +12,22 @@ public class Player : MonoBehaviour
     public float maxMovePos = 1f;
     public int health = 3;
     public int food = 0;
+    public Text foodTxt;
 
     public bool canMove = true;
     public bool canWalk = true;
+
+
+    public GameObject[] lifeSprites;
+
+    public GameObject damageEffect;
+    public GameObject foodEffect;
+    public GameObject sushiSprite;
+    public GameObject originalSushiSprite;
+
+
+    public GameObject gamePanel;
+    public GameObject winPanel;
 
     //bool isOnRight, isOnLeft, isSliding;
     //bool isOnMiddle = true;
@@ -30,6 +44,10 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        foodTxt.text = food.ToString();
+
+
     }
 
 
@@ -158,6 +176,7 @@ public class Player : MonoBehaviour
             canMove = false;
             canWalk = false;
             //stop walk anim
+            GetComponent<Animator>().SetTrigger("sit");
             //call camera functions to look at the cat
             //meuw the cat
         }
@@ -167,6 +186,10 @@ public class Player : MonoBehaviour
     void DecreaseHealth()
     {
         health -= 1;
+        lifeSprites[health].SetActive(false);
+        GameObject x = Instantiate(damageEffect, this.transform.position, Quaternion.identity);
+        x.transform.SetParent(this.gameObject.transform);
+        Destroy(x, 1f);
         //update ui
         if(health == 0)
         {
@@ -177,7 +200,31 @@ public class Player : MonoBehaviour
 
     void IncreaseFood()
     {
+        StartCoroutine(sushiSpriteCoroutine());
+
         food += 5;
+        GameObject x = Instantiate(foodEffect, this.transform.position, Quaternion.identity);
+        x.transform.SetParent(this.gameObject.transform);
+
+        Destroy(x, 1f);
+
+
+
+    }
+
+    IEnumerator sushiSpriteCoroutine()
+    {
+        GameObject x = Instantiate(sushiSprite, new Vector2(Screen.width / 2, Screen.height / 2), Quaternion.identity, gamePanel.transform);
+        while( Vector2.Distance(x.transform.position,originalSushiSprite.transform.position) > 0.01f)
+        {
+            x.transform.position = Vector2.Lerp(x.transform.position, originalSushiSprite.transform.position, 0.2f);
+            yield return new WaitForSeconds(0.01f);
+        }
+        foodTxt.text = food.ToString();
+
+        Destroy(x);
+        
+
     }
 
 }
