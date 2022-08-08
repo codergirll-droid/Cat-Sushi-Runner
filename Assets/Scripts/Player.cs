@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public bool canMove = true;
     public bool canWalk = true;
+    public bool win = false;
 
 
     public GameObject[] lifeSprites;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
 
     public GameObject gamePanel;
     public GameObject winPanel;
+    public GameObject losePanel;
 
     //bool isOnRight, isOnLeft, isSliding;
     //bool isOnMiddle = true;
@@ -177,11 +179,15 @@ public class Player : MonoBehaviour
             canWalk = false;
             //stop walk anim
             GetComponent<Animator>().SetTrigger("sit");
+            win = true;
+
+            Invoke(nameof(OpenWinPanel), 3f);
             //call camera functions to look at the cat
             //meuw the cat
         }
     }
 
+    void OpenWinPanel() { winPanel.SetActive(true); gamePanel.SetActive(false); }
 
     void DecreaseHealth()
     {
@@ -194,6 +200,7 @@ public class Player : MonoBehaviour
         if(health == 0)
         {
             //add die particles
+            losePanel.SetActive(true);
             gameObject.SetActive(false);
         }
     }
