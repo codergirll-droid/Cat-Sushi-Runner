@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     public int food = 0;
     public Text foodTxt;
 
-    public bool canMove = true;
-    public bool canWalk = true;
+    bool canMove = false;
+    bool canWalk = false;
     public bool win = false;
 
 
@@ -48,10 +48,17 @@ public class Player : MonoBehaviour
         }
 
         foodTxt.text = food.ToString();
-
-
+        
     }
-
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            canMove = true;
+            canWalk = true;
+            GetComponent<Animator>().SetBool("canWalk", true);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -179,6 +186,8 @@ public class Player : MonoBehaviour
             canWalk = false;
             //stop walk anim
             GetComponent<Animator>().SetTrigger("sit");
+            GetComponent<Animator>().SetBool("canWalk", false);
+
             win = true;
 
             Invoke(nameof(OpenWinPanel), 3f);
